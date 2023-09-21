@@ -1,12 +1,12 @@
 import React, { MouseEventHandler, useEffect, useState } from 'react';
-import { Panel, PanelHeader, Header, Button, Group, Cell, Div, Avatar } from '@vkontakte/vkui';
+import { Panel, PanelHeader, Header, Button, Group, Cell, Div } from '@vkontakte/vkui';
 import { UserInfo } from '@vkontakte/vk-bridge';
-import { useMatch, useNavigate } from 'react-router-dom';
 
 import { citiesData } from '../../utils/data';
 import { cityData } from '../../utils/types';
 import ReactSelect from 'react-select';
 import customStyles from './react-select-styles';
+import './Home.css';
 
 interface Props {
 	id: string;
@@ -21,8 +21,6 @@ type OptionType = {
 
 const Home: React.FC<Props> = ({ id, go, fetchedUser }) => {
 
-	// const navigate = useNavigate();
-
 	const [selectedValue, setSelectedValue] = useState('init');
 
 	const options: OptionType[] = [
@@ -33,9 +31,9 @@ const Home: React.FC<Props> = ({ id, go, fetchedUser }) => {
 	];
 
 	const handleDropdownChange = (selectedOption: any) => {
+		console.log(selectedOption);
 		setSelectedValue(selectedOption.value);
 	};
-
 	const getDataForSelectedCity = () => {
 		switch (selectedValue) {
 			case 'Mtsensk':
@@ -57,34 +55,17 @@ const Home: React.FC<Props> = ({ id, go, fetchedUser }) => {
 
 	const renderButton = () => {
 		if (selectedValue !== 'init') {
-			return <button className='button'>Продолжить</button>;
+			return <Button stretched size="l" mode="secondary" onClick={go} data-to="list">Продолжить</Button>;
 		}
 		return null;
 	};
 
-	// const handleClick = () => {
-	// 	navigate('/list');
-	// };
-
-	// const matchList = useMatch('/list');
-	// const matchMain = useMatch('/');
-
 	return (
 		<Panel id={id}>
 			<PanelHeader>Главная</PanelHeader>
-			{fetchedUser &&
-				<Group header={<Header mode="secondary">User Data Fetched with VK Bridge</Header>}>
-					<Cell
-						before={fetchedUser.photo_200 ? <Avatar src={fetchedUser.photo_200} /> : null}
-						subtitle={fetchedUser.city && fetchedUser.city.title ? fetchedUser.city.title : ''}
-					>
-						{`${fetchedUser.first_name} ${fetchedUser.last_name}`}
-					</Cell>
-				</Group>}
-
 			<Group header={<Header mode="secondary">Выберите ваш город</Header>}>
+				<Cell>Попа</Cell>
 				<Div className='selectContainer'>
-					{/* <label htmlFor="dropdown" className='h3'>Выберите ваш город</label> */}
 					<ReactSelect
 						className='select'
 						options={options}

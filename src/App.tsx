@@ -3,10 +3,16 @@ import bridge, { UserInfo } from '@vkontakte/vk-bridge';
 import { View, ScreenSpinner, AdaptivityProvider, AppRoot, ConfigProvider, SplitLayout, SplitCol } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+
 import Home from './panels/Home/Home';
 import Persik from './panels/Persik';
+import { ListPage } from './panels/List/List';
 
 const App = () => {
+	const location = useLocation();
+  const background = location;
+
 	const [activePanel, setActivePanel] = useState('home');
 	const [fetchedUser, setUser] = useState<UserInfo | undefined>();
 	const [popout, setPopout] = useState<ReactNode | null>(<ScreenSpinner size='large' />);
@@ -34,6 +40,7 @@ const App = () => {
 						<SplitCol>
 							<View activePanel={activePanel}>
 								<Home id='home' fetchedUser={fetchedUser} go={go} />
+								<ListPage id='list' go={go} />
 								<Persik id='persik' go={go} />
 							</View>
 						</SplitCol>

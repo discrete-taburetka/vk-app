@@ -75,13 +75,7 @@
 }
 
 .buttonContainer {
-  position: absolute;
-  margin: 16px auto 0;
-  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 180px;
 }
