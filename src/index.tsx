@@ -2,14 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 import bridge from "@vkontakte/vk-bridge";
 import App from "./App";
-import { BrowserRouter as Router } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./services/store";
 
 bridge.send("VKWebAppInit");
 
 ReactDOM.render(
-  <Router>
+  <Provider store={store}>
     <App />
-  </Router>,
+  </Provider>,
   document.getElementById("root"));
 
 if (process.env.NODE_ENV === "development") {
