@@ -12,23 +12,23 @@ interface IListPage {
 export const ListPage: FC<IListPage> = ({ data, id, go }) => {
 
   const [listData, setListData] = useState<cityData[]>([]);
-  console.log(listData);
 
   useEffect(() => {
     if (data) {
       setListData(data);
     }
-  }, [data]);
+  }, []);
 
   return (
     <Panel id={id}>
       <PanelHeader>Список</PanelHeader>
       <>
-        {/* <ul className='list'>
-          {listData.map((item: cityData, index: number) => (
-            <Rest index={index} item={item} key={index} />
-          ))}
-        </ul> */}
+        <ul className='list'>
+          {/* {listData.map((item: cityData, index: number) => (
+            console.log(item)
+            // <Rest index={index} item={item} key={index} />
+          ))} */}
+        </ul>
         <Div className='buttons'>
           <Button onClick={go} data-to="home">Назад</Button>
           <Button>Карта</Button>

@@ -12,6 +12,7 @@ interface Props {
 	id: string;
 	go: MouseEventHandler<HTMLElement>;
 	fetchedUser?: UserInfo;
+	onData?: any;
 }
 
 type OptionType = {
@@ -19,8 +20,8 @@ type OptionType = {
 	label: string;
 };
 
-const Home: React.FC<Props> = ({ id, go, fetchedUser }) => {
-
+const Home: React.FC<Props> = ({ id, go, fetchedUser, onData }) => {
+	const [cityData, setCityData] = useState<cityData[]>([]);
 	const [selectedValue, setSelectedValue] = useState('init');
 
 	const options: OptionType[] = [
@@ -31,9 +32,9 @@ const Home: React.FC<Props> = ({ id, go, fetchedUser }) => {
 	];
 
 	const handleDropdownChange = (selectedOption: any) => {
-		console.log(selectedOption);
 		setSelectedValue(selectedOption.value);
 	};
+
 	const getDataForSelectedCity = () => {
 		switch (selectedValue) {
 			case 'Mtsensk':
@@ -46,11 +47,18 @@ const Home: React.FC<Props> = ({ id, go, fetchedUser }) => {
 				return [];
 		}
 	};
-	const [cityData, setCityData] = useState<cityData[]>([]);
+
+	const setDataToApp = () => {
+		onData(cityData);
+	}
 
 	useEffect(() => {
-		const result = getDataForSelectedCity();
-		setCityData(result);
+		const fetchData = async () => {
+			const result = getDataForSelectedCity();
+			setCityData(result);
+		};
+	
+		fetchData();
 	}, [selectedValue]);
 
 	const renderButton = () => {
@@ -64,7 +72,6 @@ const Home: React.FC<Props> = ({ id, go, fetchedUser }) => {
 		<Panel id={id}>
 			<PanelHeader>Главная</PanelHeader>
 			<Group header={<Header mode="secondary">Выберите ваш город</Header>}>
-				<Cell>Попа</Cell>
 				<Div className='selectContainer'>
 					<ReactSelect
 						className='select'
