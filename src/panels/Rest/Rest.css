@@ -1,0 +1,11 @@
+.name {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 700;
+  font-size: 20px;
+  color: #7289DA;
+}
+
+.link {
+  text-decoration: none;
+  color: white;
+}

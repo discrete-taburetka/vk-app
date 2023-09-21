@@ -3,17 +3,14 @@ import { createSlice } from '@reduxjs/toolkit';
 const restaurantsSlice = createSlice({
   name: 'restaurants',
   initialState: {
-    value: 0,
+    data: [],
   },
   reducers: {
-    increment: (state) => {
-      state.value += 1;
-    },
-    decrement: (state) => {
-      state.value -= 1;
+    setData: (state, action) => {
+      return action.payload;
     },
   },
 });
 
-export const { increment, decrement } = restaurantsSlice.actions;
+export const { setData } = restaurantsSlice.actions;
 export default restaurantsSlice.reducer;
