@@ -14,7 +14,7 @@ export const ListPage: FC<IListPage> = ({ id, go }) => {
   const listData = useSelector(((state: any) => state.restaurants));
 
   return (
-    <Panel id={id}>
+    <Panel id={id} className='wrapper'>
       <PanelHeader>Список</PanelHeader>
       <>
         <ul className='list'>
