@@ -7,6 +7,8 @@ import { cityData } from '../../utils/types';
 import ReactSelect from 'react-select';
 import customStyles from './react-select-styles';
 import './Home.css';
+import { useDispatch } from 'react-redux';
+import { setData } from '../../services/slices/restaurantsSlice';
 
 interface Props {
 	id: string;
@@ -20,7 +22,9 @@ type OptionType = {
 	label: string;
 };
 
-const Home: React.FC<Props> = ({ id, go, fetchedUser, onData }) => {
+const Home: React.FC<Props> = ({ id, go }) => {
+	const dispatch = useDispatch();
+
 	const [cityData, setCityData] = useState<cityData[]>([]);
 	const [selectedValue, setSelectedValue] = useState('init');
 
@@ -48,17 +52,10 @@ const Home: React.FC<Props> = ({ id, go, fetchedUser, onData }) => {
 		}
 	};
 
-	const setDataToApp = () => {
-		onData(cityData);
-	}
-
 	useEffect(() => {
-		const fetchData = async () => {
-			const result = getDataForSelectedCity();
-			setCityData(result);
-		};
-	
-		fetchData();
+		const result = getDataForSelectedCity();
+		setCityData(result);
+		dispatch(setData(result));
 	}, [selectedValue]);
 
 	const renderButton = () => {
