@@ -1,0 +1,37 @@
+.panel {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.ul {
+  margin: 20px auto;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  list-style-type: none;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: left;
+  color: white;
+}
+
+.listItem {
+  list-style-type: none;
+}
+
+.yandexLoader {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.span {
+  color: #7289DA;
+}

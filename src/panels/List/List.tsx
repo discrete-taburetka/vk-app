@@ -9,8 +9,7 @@ interface IListPage {
   id: string;
   go: MouseEventHandler<HTMLElement>;
 }
-
-export const ListPage: FC<IListPage> = ({ id, go }) => {
+const ListPage: FC<IListPage> = ({ id, go }) => {
   const listData = useSelector(((state: any) => state.restaurants));
 
   return (
@@ -30,3 +29,5 @@ export const ListPage: FC<IListPage> = ({ id, go }) => {
     </Panel>
   );
 };
+
+export default ListPage;

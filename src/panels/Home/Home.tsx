@@ -14,7 +14,6 @@ interface Props {
 	id: string;
 	go: MouseEventHandler<HTMLElement>;
 	fetchedUser?: UserInfo;
-	onData?: any;
 }
 
 type OptionType = {
