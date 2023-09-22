@@ -1,22 +1,26 @@
-import React, { useState, MouseEventHandler, useEffect } from 'react';
+import React, { useState, MouseEvent, useEffect } from 'react';
 import bridge, { UserInfo } from '@vkontakte/vk-bridge';
 import { View, AdaptivityProvider, AppRoot, ConfigProvider, SplitLayout, SplitCol, Tabbar, TabbarItem } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 
 import Home from './panels/Home/Home';
-import { ListPage } from './panels/List/List';
+import ListPage from './panels/List/List';
+import MapPage from './panels/Map/Map';
 
 import { Icon28GlobeOutline } from '@vkontakte/icons';
 import { Icon28UserCircleOutline } from '@vkontakte/icons';
 import { Icon28CompassOutline } from '@vkontakte/icons';
 
 const App = () => {
+
+	const [activeTab, setActiveTab] = useState('home');
 	const [activePanel, setActivePanel] = useState('home');
-	const [text, setText] = useState('one');
 	const [fetchedUser, setUser] = useState<UserInfo | undefined>(undefined);
 
-	const go: MouseEventHandler<HTMLElement> = e => {
-		setActivePanel(e.currentTarget.dataset.to ?? 'home');
+	const go = (e: MouseEvent<HTMLElement>) => {
+		const to = e.currentTarget.dataset.to ?? 'home';
+		setActiveTab(to);
+		setActivePanel(to);
 	};
 
 	useEffect(() => {
@@ -36,16 +40,17 @@ const App = () => {
 							<View activePanel={activePanel} id='viewMain' className='viewMain'>
 								<Home id='home' go={go} fetchedUser={fetchedUser} />
 								<ListPage id='list' go={go} />
+								<MapPage id='map' go={go} />
 							</View>
 							<Tabbar>
-								<TabbarItem selected={text === 'one'} onClick={() => setText('one')} text="Главная">
+								<TabbarItem selected={activeTab === 'home'} onClick={(e) => go(e)} text="Главная">
 									<Icon28GlobeOutline />
 								</TabbarItem>
-								<TabbarItem selected={text === 'two'} onClick={() => setText('two')} text="Профиль">
-									<Icon28UserCircleOutline />
-								</TabbarItem>
-								<TabbarItem selected={text === 'three'} onClick={() => setText('three')} text="Карта">
+								<TabbarItem selected={activeTab === 'map'} onClick={(e) => go(e)} text="Карта" data-to="map">
 									<Icon28CompassOutline />
+								</TabbarItem>
+								<TabbarItem selected={activeTab === 'three'} onClick={(e) => go(e)} text="Профиль">
+									<Icon28UserCircleOutline />
 								</TabbarItem>
 							</Tabbar>
 						</SplitCol>

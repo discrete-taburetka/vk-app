@@ -9,41 +9,13 @@
   padding: 0;
 }
 
-.item {
-  margin: 0;
-  max-width: 960px;
-  width: 100%;
-  padding: 12px 24px;
-}
-
-.name {
-  font-family: 'Roboto Mono', monospace;
-  font-weight: 500;
-  font-size: 20px;
-  color: #FFF;
-}
-
-.button {
-  margin: 0;
-  width: 106px;
-  background-color: #4E5D94;
-  border: none;
-  border-radius: 40px;
-  color: white;
-  padding: 7px 16px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.wrapper {
+.panel {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  /* min-height: 100vh;
+  height: 100%; */
 }
 
 .buttons {
