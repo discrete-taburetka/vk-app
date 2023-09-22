@@ -66,7 +66,7 @@ const Home: React.FC<Props> = ({ id, go, fetchedUser }) => {
 	};
 
 	return (
-		<Panel id={id}>
+		<Panel id={id} className='panel'>
 			{fetchedUser &&
 				<Group header={<Header mode="secondary">User Data Fetched with VK Bridge</Header>}>
 					<Cell

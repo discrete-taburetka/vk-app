@@ -5,7 +5,7 @@
   -moz-appearance: none;
   background-color: white;
   max-width: 80%;
-  width: 100%;
+  width: 50%;
   height: 36px;
   border-radius: 10px;
 }
@@ -22,8 +22,8 @@
   justify-content: center;
   align-items: center;
   gap: 16px;
-  min-height: 65vh;
-  height: 100%;
+  /* min-height: 65vh;
+  height: 100%; */
 }
 
 .buttonContainer {
@@ -31,8 +31,8 @@
   justify-content: center;
   align-items: center;
 }
-
-.group {
-  min-height: 90vh;
+/* 
+.panel {
+  min-height: 100vh;
   height: 100%;
-}
+} */
