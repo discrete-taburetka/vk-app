@@ -65,9 +65,10 @@ const Home: React.FC<Props> = ({ id, go, fetchedUser }) => {
 	};
 
 	return (
-		<Panel id={id} className='panel'>
+		<Panel id={id}>
+			<PanelHeader>Главная</PanelHeader>
 			{fetchedUser &&
-				<Group header={<Header mode="secondary">User Data Fetched with VK Bridge</Header>}>
+				<Group>
 					<Cell
 						before={fetchedUser.photo_200 ? <Avatar src={fetchedUser.photo_200} /> : null}
 						subtitle={fetchedUser.city && fetchedUser.city.title ? fetchedUser.city.title : ''}
@@ -75,9 +76,7 @@ const Home: React.FC<Props> = ({ id, go, fetchedUser }) => {
 						{`${fetchedUser.first_name} ${fetchedUser.last_name}`}
 					</Cell>
 				</Group>}
-
-			<PanelHeader>Главная</PanelHeader>
-			<Group header={<Header mode="secondary">Выберите ваш город</Header>} className='group'>
+			<Group header={<Header mode="secondary">Выберите ваш город</Header>}>
 				<Div className='selectContainer'>
 					<ReactSelect
 						className='select'
