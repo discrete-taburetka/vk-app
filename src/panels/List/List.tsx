@@ -23,7 +23,7 @@ const ListPage: FC<IListPage> = ({ id, go }) => {
         </List>
         <Div className='buttons'>
           <Button onClick={go} data-to="home">Назад</Button>
-          <Button>Карта</Button>
+          <Button onClick={go} data-to="map">Карта</Button>
         </Div>
       </Div>
     </Panel>
