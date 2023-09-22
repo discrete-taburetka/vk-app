@@ -2,11 +2,11 @@ import React, { useState, MouseEventHandler } from 'react';
 import bridge, { UserInfo } from '@vkontakte/vk-bridge';
 import { View, AdaptivityProvider, AppRoot, ConfigProvider, SplitLayout, SplitCol, Tabbar, TabbarItem } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
-import './App.css'
+
 import Home from './panels/Home/Home';
 import Persik from './panels/Persik';
 import { ListPage } from './panels/List/List';
-
+import './App.css';
 import { Icon28GlobeOutline } from '@vkontakte/icons';
 import { Icon28UserCircleOutline } from '@vkontakte/icons';
 import { Icon28CompassOutline } from '@vkontakte/icons';
