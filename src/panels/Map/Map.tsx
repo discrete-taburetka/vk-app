@@ -1,6 +1,6 @@
 import { FC, MouseEventHandler, useEffect, useRef, useState } from "react";
 import { YMaps, Map, Placemark, SearchControl, GeolocationControl, ZoomControl } from '@pbe/react-yandex-maps';
-import { Div, List, Panel } from "@vkontakte/vkui";
+import { Div, List, Panel, PanelHeader } from "@vkontakte/vkui";
 
 import './Map.css';
 
@@ -27,6 +27,7 @@ const MapPage: FC<IMap> = ({ id, go }) => {
   console.log(location);
   return (
     <Panel id={id} className='panel'>
+      <PanelHeader>Карта</PanelHeader>
       <Div>
         <YMaps>
           {location ? (
