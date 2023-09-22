@@ -1,5 +1,5 @@
 import React, { MouseEventHandler, useEffect, useState } from 'react';
-import { Panel, PanelHeader, Header, Button, Group, Cell, Div } from '@vkontakte/vkui';
+import { Panel, PanelHeader, Header, Button, Group, Cell, Div, Avatar } from '@vkontakte/vkui';
 import { UserInfo } from '@vkontakte/vk-bridge';
 
 import { citiesData } from '../../utils/data';
@@ -22,7 +22,7 @@ type OptionType = {
 	label: string;
 };
 
-const Home: React.FC<Props> = ({ id, go }) => {
+const Home: React.FC<Props> = ({ id, go, fetchedUser }) => {
 	const dispatch = useDispatch();
 
 	const [cityData, setCityData] = useState<cityData[]>([]);
@@ -67,8 +67,18 @@ const Home: React.FC<Props> = ({ id, go }) => {
 
 	return (
 		<Panel id={id}>
+			{fetchedUser &&
+				<Group header={<Header mode="secondary">User Data Fetched with VK Bridge</Header>}>
+					<Cell
+						before={fetchedUser.photo_200 ? <Avatar src={fetchedUser.photo_200} /> : null}
+						subtitle={fetchedUser.city && fetchedUser.city.title ? fetchedUser.city.title : ''}
+					>
+						{`${fetchedUser.first_name} ${fetchedUser.last_name}`}
+					</Cell>
+				</Group>}
+
 			<PanelHeader>Главная</PanelHeader>
-			<Group header={<Header mode="secondary">Выберите ваш город</Header>}>
+			<Group header={<Header mode="secondary">Выберите ваш город</Header>} className='group'>
 				<Div className='selectContainer'>
 					<ReactSelect
 						className='select'

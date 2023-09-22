@@ -22,7 +22,7 @@
   justify-content: center;
   align-items: center;
   gap: 16px;
-  min-height: 70vh;
+  min-height: 65vh;
   height: 100%;
 }
 
@@ -30,4 +30,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.group {
+  min-height: 90vh;
+  height: 100%;
 }
